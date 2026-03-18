@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yagna.dev/</loc>
+    <loc>https://yagna-portfolio.vercel.app/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#about</loc>
+    <loc>https://yagna-portfolio.vercel.app/#about</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#projects</loc>
+    <loc>https://yagna-portfolio.vercel.app/#projects</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#astragraph</loc>
+    <loc>https://yagna-portfolio.vercel.app/#astragraph</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#recast</loc>
+    <loc>https://yagna-portfolio.vercel.app/#recast</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#chromapro</loc>
+    <loc>https://yagna-portfolio.vercel.app/#chromapro</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#nexusgate</loc>
+    <loc>https://yagna-portfolio.vercel.app/#nexusgate</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#aegis</loc>
+    <loc>https://yagna-portfolio.vercel.app/#aegis</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#fluxroute</loc>
+    <loc>https://yagna-portfolio.vercel.app/#fluxroute</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#mcp-test</loc>
+    <loc>https://yagna-portfolio.vercel.app/#mcp-test</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yagna.dev/#faq</loc>
+    <loc>https://yagna-portfolio.vercel.app/#faq</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
