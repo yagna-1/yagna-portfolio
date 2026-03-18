@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yagna Siva Sai Kumar - AI Systems Engineer specializing in LLM infrastructure, hybrid RAG architectures, multi-agent systems, and production ML pipelines. Creator of Astragraph, Recast, ChromaPro, NexusGate, and Aegis. Building the future of AI at Turing.">
+  <meta name="keywords" content="Yagna Siva Sai Kumar, AI Engineer, LLM Infrastructure, RAG, Multi-Agent Systems, ChromaDB, FAISS, Python, Go, Rust, Machine Learning, Turing, Astragraph, Recast, ChromaPro, NexusGate, Aegis, FluxRoute, MCP, A2A, Model Context Protocol">
+  <meta name="author" content="Yagna Siva Sai Kumar">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yagna Siva Sai Kumar | AI Systems Engineer">
+  <meta property="og:description" content="Building production LLM infrastructure, hybrid RAG systems, and multi-agent architectures. Creator of Astragraph, Recast, ChromaPro. Open source contributor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yagna.dev">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/yagna-1">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yagna Siva Sai Kumar | AI Systems Engineer">
+  <meta name="twitter:description" content="Building production LLM infrastructure, hybrid RAG systems, and multi-agent architectures. Creator of Astragraph, Recast, ChromaPro.">
+  
+  <title>Yagna Siva Sai Kumar | AI Systems Engineer</title>
+  
+  <link rel="canonical" href="https://yagna.dev">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --bg-secondary: #111113;
+      --text: #e4e4e7;
+      --text-muted: #a1a1aa;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --border: #27272a;
+      --card-bg: #18181b;
+      --gradient-1: #3b82f6;
+      --gradient-2: #8b5cf6;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-hover); }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-muted); font-size: 0.9rem; }
+    .nav-links a:hover { color: var(--text); }
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .hero-content { position: relative; z-index: 1; }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 32px;
+    }
+    
+    .hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--bg-secondary);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    
+    section { padding: 100px 0; }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    
+    .about-text p { color: var(--text-muted); margin-bottom: 16px; }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    
+    .skill {
+      padding: 6px 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    .experience-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    
+    .experience-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+    .experience-card .company { color: var(--accent); font-weight: 500; }
+    .experience-card .date { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; }
+    .experience-card ul { color: var(--text-muted); padding-left: 20px; font-size: 0.9rem; }
+    .experience-card li { margin-bottom: 8px; }
+    
+    .project-detail {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+    
+    .project-detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .project-detail h3 {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+    
+    .project-detail-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    .project-detail p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    
+    .project-detail strong { color: var(--text); }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    
+    .feature {
+      padding: 16px;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .feature-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+    
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    
+    .tag {
+      padding: 6px 12px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+    
+    .tag-rust { background: rgba(247, 76, 0, 0.1); color: #f74c00; }
+    .tag-go { background: rgba(0, 173, 216, 0.1); color: #00ADD8; }
+    .tag-python { background: rgba(55, 118, 171, 0.1); color: #3776ab; }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .comparison-table th {
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    .comparison-table td {
+      color: var(--text-muted);
+    }
+    
+    .comparison-table tr:hover td {
+      background: var(--bg);
+    }
+    
+    .faq-section { background: var(--bg-secondary); }
+    
+    .faq-list { max-width: 900px; }
+    
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    
+    .faq-item h3 {
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+    
+    .footer-links a {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .footer-links a:hover { color: var(--accent); }
+    
+    .copyright { color: var(--text-muted); font-size: 0.85rem; }
+    
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-links { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+      .project-detail { padding: 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  
+  <!-- JSON-LD Schema for AI Citability -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yagna Siva Sai Kumar",
+    "alternateName": ["Yagna", "yagna-1"],
+    "url": "https://yagna.dev",
+    "image": "https://avatars.githubusercontent.com/u/yagna-1",
+    "jobTitle": "AI Systems Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Turing",
+      "url": "https://turing.com"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "National Institute of Technology Jaipur",
+      "alternateName": "NIT Jaipur"
+    },
+    "knowsAbout": [
+      "Large Language Models (LLM)",
+      "Retrieval Augmented Generation (RAG)",
+      "Multi-Agent Systems",
+      "Model Context Protocol (MCP)",
+      "Agent-to-Agent Protocol (A2A)",
+      "Vector Databases",
+      "ChromaDB",
+      "FAISS",
+      "RocksDB",
+      "Python",
+      "Go",
+      "Rust",
+      "TypeScript",
+      "Machine Learning",
+      "MLOps",
+      "AWS",
+      "Kubernetes",
+      "Docker",
+      "Distributed Systems",
+      "LLM Inference Optimization"
+    ],
+    "sameAs": [
+      "https://github.com/yagna-1",
+      "https://linkedin.com/in/yagna-siva-sai-kumar-984881201"
+    ],
+    "description": "AI Systems Engineer specializing in LLM infrastructure, hybrid retrieval architectures, and large-scale model evaluation pipelines. Creator of open-source tools including Astragraph (multi-agent security), Recast (browser agent compiler), ChromaPro (crash-safe vector DB), NexusGate (LLM gateway), and Aegis (credential proxy for AI agents). Experienced designing distributed inference systems, agent safety layers, and production RAG pipelines."
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Yagna Siva Sai Kumar - AI Engineer Portfolio",
+    "url": "https://yagna.dev",
+    "description": "Personal portfolio and blog of Yagna Siva Sai Kumar, AI Systems Engineer specializing in LLM infrastructure, multi-agent systems, and production ML pipelines. Featuring open-source projects like Astragraph, Recast, ChromaPro, NexusGate, and Aegis.",
+    "datePublished": "2026-03-18",
+    "dateModified": "2026-03-18",
+    "inLanguage": "en-US",
+    "author": {
+      "@type": "Person",
+      "name": "Yagna Siva Sai Kumar"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".hero-subtitle", ".about-text", ".faq-item h3", ".faq-item p", ".project-detail h3", ".project-detail p"]
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Yagna Siva Sai Kumar",
+      "url": "https://yagna.dev"
+    }
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Yagna Siva Sai Kumar's expertise?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yagna Siva Sai Kumar is an AI Systems Engineer with demonstrated expertise in LLM infrastructure, hybrid RAG architectures, multi-agent systems, and production ML pipelines. At Turing, he built distributed inference pipelines executing 1,000+ LLM tasks in parallel, achieving a 70% reduction in benchmark evaluation time. He architected hybrid RAG systems that improved retrieval accuracy by 25% and reduced model hallucinations by 20% through advanced prompt engineering. He engineered the evaluation pipeline for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115), benchmarking LLM performance against 1,400+ real-world engineering tasks. His open-source projects include Astragraph (24 GitHub stars), Recast (9 stars), and 5 other AI infrastructure tools."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Astragraph and how does it work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Astragraph is a policy-enforced observability system for tool-using, multi-agent systems, built in Rust by Yagna Siva Sai Kumar with 24 GitHub stars. It provides enterprise-grade security for AI agent communications with sub-25ms latency overhead. The architecture consists of a Rust proxy, policy service, graph service, and React/Vite dashboard. Key capabilities include: fail-closed enforcement preventing unsafe tool calls before execution; causal coordination graphs reconstructing agent interactions; searchable audit trails for violation investigation; and support for mixed MCP (Model Context Protocol) and A2A (Agent-to-Agent) workflows. According to the MCP specification (Anthropic, 2024), secure agent communication is critical for production deployments—Astragraph implements this with policy YAML files and real-time violation detection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is ChromaPro and why use it over ChromaDB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromaPro is a production-safe persistence layer for local vector collections, built by Yagna as a Chroma-compatible API backed by RocksDB + hnswlib. Key advantages over ChromaDB include: RocksDB storage with CRC32c checksums vs SQLite single-file SPOF; synchronous fsync per write guaranteeing durability vs async WAL flush with potential data loss; fcntl.LOCK_EX per collection for cross-process safety; automatic HNSW index rebuild from RocksDB ground truth; and version metadata to detect format mismatches. ChromaPro is ~9x faster on single writes and guarantees zero data loss during process crashes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Recast and how does it compile browser agent traces?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Recast is a compiler that takes AI browser agent recordings (from workflow-use, browser-use, Skyvern, Operator) and emits clean, readable, static Playwright test code—with no LLM required at replay time, no proprietary runtime dependencies, and no magic. Built in Go by Yagna with 9 GitHub stars, it accepts workflow-use JSON, HAR files, CDP event logs, and MCP tool call logs as input. Recast solves the problem of AI browser agents re-reasoning through tasks at runtime (burning LLM tokens on every step, every run, forever) by compiling once and running forever on plain Playwright. Features include selector hardening, explicit wait injection, credential sanitization to environment variables, and duplicate step removal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is NexusGate LLM gateway?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NexusGate is a drop-in OpenAI-compatible proxy that routes to OpenAI, Anthropic, and Google Gemini—with budget enforcement, automatic rate-limit fallback, and per-key spend tracking. Built in Rust by Yagna, it solves vendor lock-in with one API key for every LLM provider and full cost control. Features include: auto-fallback to Anthropic/Gemini when OpenAI rate-limits or goes down; hard per-key daily/monthly/total budget caps; isolated keys for multiple teams with their own limits; exact cost_usd in every response; and zero code changes required—just point base_url at NexusGate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Aegis credential proxy for AI agents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aegis is a lightweight credential proxy for AI agent workflows. It sits between your agent and any API, injecting real secrets at the network boundary so the agent never sees credentials. Built in Go by Yagna as a single-binary runtime (~17 MB executable, ~660 KB repo size), it solves the problem of sensitive credentials exposed in agent context/system prompts (vulnerable to prompt injection). Aegis works natively as an MCP server with Cursor, Claude Desktop, VS Code/Cline, and Windsurf. It integrates with Infisical for secret management—your actual API secrets stay in Infisical, never on disk."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is FluxRoute AI orchestration runtime?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FluxRoute is an AI-native orchestration runtime and control plane for deterministic replay and tenant-aware billing. Built in Go by Yagna, it provides: deterministic replay with divergence debugging (trace capture, replay validation, diff tooling); multi-tenant control-plane primitives (tenant lifecycle APIs, RBAC enforcement, namespace isolation); built-in metering and billing (usage endpoints, monthly summary, JSON/CSV invoice export); and production observability with OpenTelemetry, Prometheus, Jaeger, retries, circuit breaker, and panic containment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is mcp-test testing framework?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "mcp-test is a pytest-based testing framework for MCP (Model Context Protocol) servers. Built in Python by Yagna, it addresses the fact that while thousands of developers build MCP servers, nobody was testing them properly. mcp-test provides the same developer experience you expect from pytest for testing MCP tools, resources, and prompts. Features include: scaffold command (mcp-test init), session-scoped and function-scoped fixtures, assertion helpers (assert_tool_ok, assert_tool_error, assert_tool_text_contains), and JSON-RPC 2.0 over stdio communication with background message pump for concurrent request support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does Yagna Siva Sai Kumar work and what has he built?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yagna works at Turing as a Python AI/ML Developer since March 2024. He engineered the evaluation pipeline for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115), benchmarking LLM performance against 1,400+ real-world engineering tasks. He built a distributed inference pipeline executing 1,000+ LLM tasks in parallel using asynchronous orchestration, reducing benchmark evaluation time by ~70%. He also architected a hybrid RAG pipeline on AWS (EC2, S3) integrating semantic and keyword search (BM25) with vector databases (ChromaDB/FAISS), improving retrieval accuracy by 25%, and engineered prompt strategies achieving 20% reduction in model hallucinations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What programming languages does Yagna use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yagna is proficient in Python, Go, Rust, TypeScript, and JavaScript. He uses Python for ML/AI work, data pipelines, and tools like mcp-test and ChromaPro. He uses Go for high-performance systems like Recast, Aegis, FluxRoute, and baremetal-infer. He uses Rust for infrastructure requiring maximum performance and safety like Astragraph, NexusGate, and Memory-KV-Cache. He uses TypeScript for web applications and tooling. His tech stack also includes PyTorch, TensorFlow, HuggingFace Transformers, vLLM, LoRA/QLoRA, FAISS, Milvus, ChromaDB, PostgreSQL, AWS, Docker, Kubernetes, Ray, and FastAPI."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Open Source Projects by Yagna Siva Sai Kumar",
+    "description": "Collection of AI infrastructure, multi-agent systems, and developer tools built by Yagna Siva Sai Kumar",
+    "itemListElement": [
+      {
+        "@type": "SoftwareSourceCode",
+        "position": 1,
+        "name": "Astragraph",
+        "description": "Policy-enforced observability for tool-using, multi-agent systems. Sits in front of MCP and A2A traffic, evaluates every action against policy, and writes a causal graph plus audit trail queryable in real time. Provides fail-closed enforcement to prevent unsafe tool calls before execution.",
+        "codeRepository": "https://github.com/yagna-1/astragraph",
+        "programmingLanguage": "Rust",
+        "runtimePlatform": "Docker",
+        "applicationCategory": "Multi-Agent Security",
+        "operatingSystem": "Linux, macOS",
+        "author": {"@type": "Person", "name": "Yagna Siva Sai Kumar"},
+        "dateCreated": "2026-02-07",
+        "keywords": ["MCP", "A2A", "multi-agent", "policy enforcement", "observability", "audit trail", "Rust"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "position": 2,
+        "name": "Recast",
+        "description": "Compiler that takes AI browser agent recordings (workflow-use, browser-use, Skyvern, Operator) and emits clean, readable, static Playwright test code. No LLM required at replay time, no proprietary runtime dependencies. Compile once, run forever on plain Playwright.",
+        "codeRepository": "https://github.com/yagna-1/recast",
+        "programmingLanguage": "Go",
+        "applicationCategory": "Browser Automation Compiler",
+        "operatingSystem": "Linux, macOS, Windows",
+        "author": {"@type": "Person", "name": "Yagna Siva Sai Kumar"},
+        "dateCreated": "2026-03-11",
+        "keywords": ["Playwright", "browser automation", "AI agents", "testing", "compiler", "Go"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "position": 3,
+        "name": "ChromaPro",
+        "description": "Production-safe persistence layer for local vector collections. Chroma-compatible API backed by RocksDB + hnswlib, built for crash safety, multi-process correctness, and operational durability. 9x faster single writes, zero data loss during crashes.",
+        "codeRepository": "https://github.com/yagna-1/chromapro",
+        "programmingLanguage": "Python",
+        "applicationCategory": "Vector Database",
+        "operatingSystem": "Linux, macOS",
+        "author": {"@type": "Person", "name": "Yagna Siva Sai Kumar"},
+        "dateCreated": "2026-03-01",
+        "keywords": ["vector database", "RAG", "RocksDB", "hnswlib", "ChromaDB", "crash safety", "Python"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "position": 4,
+        "name": "NexusGate",
+        "description": "Drop-in OpenAI-compatible proxy that routes to OpenAI, Anthropic, and Google Gemini with budget enforcement, automatic rate-limit fallback, and per-key spend tracking. One API key for every LLM provider with full cost control.",
+        "codeRepository": "https://github.com/yagna-1/nexusgate",
+        "programmingLanguage": "Rust",
+        "applicationCategory": "LLM Gateway",
+        "operatingSystem": "Linux, macOS",
+        "author": {"@type": "Person", "name": "Yagna Siva Sai Kumar"},
+        "dateCreated": "2026-03-13",
+        "keywords": ["LLM gateway", "OpenAI proxy", "Anthropic", "Gemini", "rate limiting", "cost governance", "Rust"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "position": 5,
+        "name": "Aegis",
+        "description": "Lightweight credential proxy for AI agent workflows. Sits between agent and API, injecting real secrets at network boundary so agents never see credentials. Works natively as MCP server with Cursor, Claude Desktop, VS Code/Cline, Windsurf.",
+        "codeRepository": "https://github.com/yagna-1/aegis",
+        "programmingLanguage": "Go",
+        "applicationCategory": "Credential Management",
+        "operatingSystem": "Linux, macOS, Windows",
+        "author": {"@type": "Person", "name": "Yagna Siva Sai Kumar"},
+        "dateCreated": "2026-03-18",
+        "keywords": ["credential proxy", "AI agents", "MCP", "security", "Infisical", "Go"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "position": 6,
+        "name": "FluxRoute",
+        "description": "AI-native orchestration runtime and control plane for deterministic replay and tenant-aware billing. Provides trace capture, replay validation, diff tooling, multi-tenant RBAC, namespace isolation, and built-in metering with JSON/CSV invoice export.",
+        "codeRepository": "https://github.com/yagna-1/fluxroute",
+        "programmingLanguage": "Go",
+        "applicationCategory": "AI Orchestration Runtime",
+        "operatingSystem": "Linux, macOS",
+        "author": {"@type": "Person", "name": "Yagna Siva Sai Kumar"},
+        "dateCreated": "2026-02-14",
+        "keywords": ["AI orchestration", "deterministic replay", "multi-tenant", "billing", "observability", "Go"]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "position": 7,
+        "name": "mcp-test",
+        "description": "pytest for MCP servers—the testing framework for Model Context Protocol. Write tests for MCP tools, resources, and prompts with familiar pytest developer experience. Session-scoped and function-scoped fixtures, assertion helpers, JSON-RPC 2.0 over stdio.",
+        "codeRepository": "https://github.com/yagna-1/mcp-test",
+        "programmingLanguage": "Python",
+        "applicationCategory": "Testing Framework",
+        "operatingSystem": "Linux, macOS, Windows",
+        "author": {"@type": "Person", "name": "Yagna Siva Sai Kumar"},
+        "dateCreated": "2026-03-06",
+        "keywords": ["MCP", "testing", "pytest", "Model Context Protocol", "Python"]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#" class="logo">yagna.dev</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://github.com/yagna-1" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Hi, I'm <span>Yagna</span></h1>
+          <p class="hero-subtitle">
+            AI Systems Engineer building production LLM infrastructure, hybrid RAG systems, 
+            and multi-agent architectures. Creator of <strong>Astragraph</strong>, <strong>Recast</strong>, 
+            <strong>ChromaPro</strong>, and more. Currently shipping AI at <strong>Turing</strong>.
+          </p>
+          <div class="hero-links">
+            <a href="https://github.com/yagna-1" target="_blank" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View GitHub
+            </a>
+            <a href="https://linkedin.com/in/yagna-siva-sai-kumar-984881201" target="_blank" class="btn btn-secondary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I'm an <strong>AI Systems Engineer</strong> specializing in <strong>LLM infrastructure</strong>, 
+              <strong>hybrid retrieval architectures</strong>, and <strong>large-scale model evaluation pipelines</strong>. 
+              I design distributed inference systems, agent safety layers, and production RAG pipelines on AWS.
+            </p>
+            <p>
+              At <strong>Turing</strong>, I engineered the evaluation pipeline for the 
+              <a href="https://arxiv.org/abs/2502.12115" target="_blank">OpenAI SWE-Lancer benchmark</a>, 
+              benchmarking LLM performance against <strong>1,400+ real-world engineering tasks</strong>. 
+              I built <strong>distributed inference pipelines executing 1,000+ LLM tasks in parallel</strong> 
+              using asynchronous orchestration, reducing benchmark evaluation time by <strong>~70%</strong>.
+            </p>
+            <p>
+              I architected a <strong>hybrid RAG pipeline</strong> on AWS (EC2, S3) integrating semantic and 
+              keyword search (BM25) with vector databases (ChromaDB/FAISS), improving retrieval accuracy by <strong>25%</strong>. 
+              I also engineered prompt strategies achieving <strong>20% reduction in model hallucinations</strong>.
+            </p>
+            <p>
+              Previously at <strong>Genpact</strong>, I built LLM-powered chatbots using LangChain 
+              and OpenAI APIs that reduced manual information lookup time by ~60%.
+            </p>
+            <p>
+              I graduated from <strong>NIT Jaipur</strong> with a B.Tech in Electronics and Communication Engineering.
+            </p>
+            <div class="skills">
+              <span class="skill">Python</span>
+              <span class="skill">Go</span>
+              <span class="skill">Rust</span>
+              <span class="skill">TypeScript</span>
+              <span class="skill">PyTorch</span>
+              <span class="skill">LangChain</span>
+              <span class="skill">RAG</span>
+              <span class="skill">FAISS</span>
+              <span class="skill">ChromaDB</span>
+              <span class="skill">vLLM</span>
+              <span class="skill">LoRA/QLoRA</span>
+              <span class="skill">AWS</span>
+              <span class="skill">Kubernetes</span>
+              <span class="skill">Docker</span>
+              <span class="skill">MCP</span>
+              <span class="skill">A2A</span>
+            </div>
+          </div>
+          <div>
+            <div class="experience-card">
+              <h3>Python AI/ML Developer</h3>
+              <div class="company">Turing</div>
+              <div class="date">Mar 2024 — Present</div>
+              <ul>
+                <li>Engineered OpenAI SWE-Lancer benchmark (arXiv:2502.12115) evaluation pipeline for 1,400+ tasks</li>
+                <li>Built distributed inference executing 1,000+ LLM tasks in parallel (~70% faster)</li>
+                <li>Architected hybrid RAG on AWS with 25% retrieval accuracy improvement</li>
+                <li>Achieved 20% reduction in model hallucinations via prompt engineering</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" style="background: var(--bg-secondary);">
+      <div class="container">
+        <h2 class="section-title">Open Source Projects</h2>
+        
+        <!-- Astragraph -->
+        <article class="project-detail" id="astragraph">
+          <div class="project-detail-header">
+            <div>
+              <h3>Astragraph</h3>
+              <div class="project-detail-meta">
+                <span>⭐ 24 stars</span>
+                <span>Rust</span>
+                <span>Feb 2026</span>
+              </div>
+            </div>
+            <a href="https://github.com/yagna-1/astragraph" target="_blank" class="btn btn-secondary">View on GitHub</a>
+          </div>
+          <p>
+            <strong>Policy-enforced observability for tool-using, multi-agent systems.</strong> Astragraph sits in front of 
+            <strong>MCP (Model Context Protocol)</strong> and <strong>A2A (Agent-to-Agent)</strong> traffic, evaluates every 
+            action against policy, and writes a <strong>causal graph plus audit trail</strong> you can query in real time.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-title">Fail-Closed Enforcement</div>
+              <div class="feature-desc">Prevent unsafe tool calls before execution—never fail open</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Causal Coordination Graph</div>
+              <div class="feature-desc">Reconstruct who did what and why across agent interactions</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Searchable Audit Trail</div>
+              <div class="feature-desc">Investigate violations fast with workflow-level traces</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Multi-Agent Support</div>
+              <div class="feature-desc">Handle workflows where MCP and A2A mix in one run</div>
+            </div>
+          </div>
+          <p>
+            The system validates core controls including A2A task handoff, malformed MCP JSON rejection, 
+            safe tool call approval, missing-trace blocking, and risky tool call denial. Built with a 
+            <strong>Rust proxy</strong>, <strong>policy service</strong>, <strong>graph service</strong>, 
+            and <strong>React/Vite dashboard</strong>.
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-rust">Rust</span>
+            <span class="tag">MCP</span>
+            <span class="tag">A2A</span>
+            <span class="tag">Multi-Agent Security</span>
+            <span class="tag">Policy Enforcement</span>
+            <span class="tag">Observability</span>
+            <span class="tag">Audit Trail</span>
+          </div>
+        </article>
+
+        <!-- Recast -->
+        <article class="project-detail" id="recast">
+          <div class="project-detail-header">
+            <div>
+              <h3>Recast</h3>
+              <div class="project-detail-meta">
+                <span>⭐ 9 stars</span>
+                <span>Go</span>
+                <span>Mar 2026</span>
+              </div>
+            </div>
+            <a href="https://github.com/yagna-1/recast" target="_blank" class="btn btn-secondary">View on GitHub</a>
+          </div>
+          <p>
+            <strong>Turn any AI browser run into clean, production Playwright code.</strong> Recast is a compiler that 
+            takes AI browser agent recordings (from <strong>workflow-use</strong>, <strong>browser-use</strong>, 
+            <strong>Skyvern</strong>, <strong>Operator</strong>) and emits clean, readable, static Playwright test code—with 
+            <strong>no LLM required at replay time</strong>, no proprietary runtime dependencies, and no magic.
+          </p>
+          <p>
+            <strong>The problem:</strong> AI browser agents re-reason through browser tasks at runtime—burning LLM tokens 
+            on every step, every run, forever. Recorded workflows are locked to proprietary runtimes and can't be 
+            committed to CI pipelines, reviewed by developers, or diff-ed. <strong>Recast fixes that: compile once, 
+            run forever, on plain Playwright.</strong>
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-title">Multiple Input Formats</div>
+              <div class="feature-desc">workflow-use JSON, HAR files, CDP event logs, MCP tool call logs</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Selector Hardening</div>
+              <div class="feature-desc">Automatically hardens selectors for reliability</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Credential Sanitization</div>
+              <div class="feature-desc">Replaces credentials with environment variables</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Wait Injection</div>
+              <div class="feature-desc">Injects explicit waits for stable execution</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-go">Go</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">Browser Automation</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">Testing</span>
+            <span class="tag">Compiler</span>
+          </div>
+        </article>
+
+        <!-- ChromaPro -->
+        <article class="project-detail" id="chromapro">
+          <div class="project-detail-header">
+            <div>
+              <h3>ChromaPro</h3>
+              <div class="project-detail-meta">
+                <span>Python</span>
+                <span>Mar 2026</span>
+              </div>
+            </div>
+            <a href="https://github.com/yagna-1/chromapro" target="_blank" class="btn btn-secondary">View on GitHub</a>
+          </div>
+          <p>
+            <strong>Production-safe persistence layer for local vector collections.</strong> ChromaPro is a 
+            <strong>Chroma-compatible API</strong> backed by <strong>RocksDB + hnswlib</strong>, built for 
+            crash safety, multi-process correctness, and operational durability.
+          </p>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>ChromaDB</th>
+                <th>ChromaPro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Storage engine</td>
+                <td>SQLite (WAL) — single-file SPOF</td>
+                <td><strong>RocksDB</strong> — multi-file SSTs + CRC32c checksums</td>
+              </tr>
+              <tr>
+                <td>Crash durability</td>
+                <td>Async WAL flush — data loss possible</td>
+                <td><strong>Synchronous fsync</strong> per write — guaranteed durable</td>
+              </tr>
+              <tr>
+                <td>Cross-process safety</td>
+                <td>No file locks on HNSW binary</td>
+                <td><strong>fcntl.LOCK_EX</strong> per collection — serializes writers</td>
+              </tr>
+              <tr>
+                <td>HNSW recovery</td>
+                <td>No automatic rebuild if deleted</td>
+                <td><strong>Auto-rebuilds</strong> from RocksDB ground truth</td>
+              </tr>
+              <tr>
+                <td>Single write performance</td>
+                <td>Baseline</td>
+                <td><strong>~9x faster</strong> (RocksDB synced WAL)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            <strong>Trade-off:</strong> ChromaPro is ~4x slower on bulk write throughput vs ChromaDB due to HNSW index 
+            construction, but <strong>~9x faster on single writes</strong> and <strong>guarantees zero data loss during 
+            process crashes</strong>.
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-python">Python</span>
+            <span class="tag">Vector Database</span>
+            <span class="tag">RocksDB</span>
+            <span class="tag">hnswlib</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Crash Safety</span>
+            <span class="tag">ChromaDB Alternative</span>
+          </div>
+        </article>
+
+        <!-- NexusGate -->
+        <article class="project-detail" id="nexusgate">
+          <div class="project-detail-header">
+            <div>
+              <h3>NexusGate</h3>
+              <div class="project-detail-meta">
+                <span>Rust</span>
+                <span>Mar 2026</span>
+              </div>
+            </div>
+            <a href="https://github.com/yagna-1/nexusgate" target="_blank" class="btn btn-secondary">View on GitHub</a>
+          </div>
+          <p>
+            <strong>Stop vendor lock-in. One API key. Every LLM provider. Full cost control.</strong> NexusGate is a 
+            drop-in <strong>OpenAI-compatible proxy</strong> that routes to <strong>OpenAI</strong>, <strong>Anthropic</strong>, 
+            and <strong>Google Gemini</strong>—with budget enforcement, automatic rate-limit fallback, and per-key spend tracking.
+          </p>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Problem</th>
+                <th>NexusGate Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OpenAI goes down or rate-limits you</td>
+                <td>Auto-falls back to Anthropic/Gemini—transparently</td>
+              </tr>
+              <tr>
+                <td>Runaway LLM spend</td>
+                <td>Hard per-key daily / monthly / total budget caps</td>
+              </tr>
+              <tr>
+                <td>Multiple teams sharing one API key</td>
+                <td>Issue isolated keys, each with its own limits</td>
+              </tr>
+              <tr>
+                <td>No visibility into what LLMs cost</td>
+                <td>Every response includes exact cost_usd</td>
+              </tr>
+              <tr>
+                <td>Switching providers requires code changes</td>
+                <td>Zero changes—just point base_url at NexusGate</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Every response includes a <code>nexusgate</code> metadata field with provider, model_used, tier, cost_usd, 
+            fallback_used, and request_id. Works with any OpenAI-compatible SDK with zero code changes.
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-rust">Rust</span>
+            <span class="tag">LLM Gateway</span>
+            <span class="tag">OpenAI Proxy</span>
+            <span class="tag">Anthropic</span>
+            <span class="tag">Gemini</span>
+            <span class="tag">Cost Governance</span>
+            <span class="tag">Rate Limiting</span>
+          </div>
+        </article>
+
+        <!-- Aegis -->
+        <article class="project-detail" id="aegis">
+          <div class="project-detail-header">
+            <div>
+              <h3>Aegis</h3>
+              <div class="project-detail-meta">
+                <span>⭐ 1 star</span>
+                <span>Go</span>
+                <span>Mar 2026</span>
+              </div>
+            </div>
+            <a href="https://github.com/yagna-1/aegis" target="_blank" class="btn btn-secondary">View on GitHub</a>
+          </div>
+          <p>
+            <strong>Secure credential proxy for AI agents.</strong> Aegis is a lightweight credential proxy for 
+            AI agent workflows. It sits between your agent and any API—<strong>injecting real secrets at the network 
+            boundary</strong>. The agent <strong>never sees credentials</strong>.
+          </p>
+          <p>
+            <strong>The problem:</strong> Agent context/system prompts often contain raw credentials like 
+            <code>GITHUB_TOKEN=ghp_abc123</code>. One prompt injection and your secrets are gone.
+          </p>
+          <p>
+            <strong>The fix:</strong> Agent calls <code>http://localhost:8080</code> (no key visible) → Aegis pulls 
+            the real token from Infisical at request time (never stored locally) → forwards to the actual API.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-title">~17 MB Binary</div>
+              <div class="feature-desc">Single-binary Go runtime with compact footprint</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">MCP Server Mode</div>
+              <div class="feature-desc">Works natively with Cursor, Claude Desktop, VS Code/Cline, Windsurf</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Infisical Integration</div>
+              <div class="feature-desc">Secrets stay in Infisical, never on disk</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Zero Agent Exposure</div>
+              <div class="feature-desc">Credentials injected at network boundary only</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-go">Go</span>
+            <span class="tag">Credential Proxy</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">MCP Server</span>
+            <span class="tag">Security</span>
+            <span class="tag">Infisical</span>
+          </div>
+        </article>
+
+        <!-- FluxRoute -->
+        <article class="project-detail" id="fluxroute">
+          <div class="project-detail-header">
+            <div>
+              <h3>FluxRoute</h3>
+              <div class="project-detail-meta">
+                <span>⭐ 1 star</span>
+                <span>Go</span>
+                <span>Feb 2026</span>
+              </div>
+            </div>
+            <a href="https://github.com/yagna-1/fluxroute" target="_blank" class="btn btn-secondary">View on GitHub</a>
+          </div>
+          <p>
+            <strong>AI-native orchestration runtime and control plane for deterministic replay and tenant-aware billing.</strong> 
+            FluxRoute provides a complete solution for running, debugging, and billing AI agent workflows in production.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-title">Deterministic Replay</div>
+              <div class="feature-desc">Trace capture, replay validation, and diff tooling</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Multi-Tenant Control Plane</div>
+              <div class="feature-desc">Tenant lifecycle APIs, RBAC enforcement, namespace isolation</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Built-in Billing</div>
+              <div class="feature-desc">Usage endpoints, monthly summary, JSON/CSV invoice export</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Production Observability</div>
+              <div class="feature-desc">OTel, Prometheus, Jaeger, retries, circuit breaker, panic containment</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-go">Go</span>
+            <span class="tag">AI Orchestration</span>
+            <span class="tag">Deterministic Replay</span>
+            <span class="tag">Multi-Tenant</span>
+            <span class="tag">Billing</span>
+            <span class="tag">OpenTelemetry</span>
+            <span class="tag">Prometheus</span>
+          </div>
+        </article>
+
+        <!-- mcp-test -->
+        <article class="project-detail" id="mcp-test">
+          <div class="project-detail-header">
+            <div>
+              <h3>mcp-test</h3>
+              <div class="project-detail-meta">
+                <span>Python</span>
+                <span>Mar 2026</span>
+              </div>
+            </div>
+            <a href="https://github.com/yagna-1/mcp-test" target="_blank" class="btn btn-secondary">View on GitHub</a>
+          </div>
+          <p>
+            <strong>pytest for MCP servers—the testing framework for Model Context Protocol.</strong> MCP became the 
+            Linux Foundation standard in early 2026. Thousands of developers are building MCP servers. 
+            <strong>Nobody was testing them.</strong> mcp-test fixes that.
+          </p>
+          <p>
+            Write tests for your MCP tools, resources, and prompts with the same developer experience you expect from pytest:
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <div class="feature-title">Familiar API</div>
+              <div class="feature-desc">assert_tool_ok, assert_tool_error, assert_tool_text_contains</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Flexible Fixtures</div>
+              <div class="feature-desc">Session-scoped (fast) or function-scoped (isolated) clients</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">Scaffolding CLI</div>
+              <div class="feature-desc">mcp-test init creates test directory with examples</div>
+            </div>
+            <div class="feature">
+              <div class="feature-title">JSON-RPC Under Hood</div>
+              <div class="feature-desc">Background message pump handles concurrent requests</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag tag-python">Python</span>
+            <span class="tag">MCP</span>
+            <span class="tag">Testing</span>
+            <span class="tag">pytest</span>
+            <span class="tag">Model Context Protocol</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          
+          <div class="faq-item">
+            <h3>What is Yagna Siva Sai Kumar's expertise?</h3>
+            <p>
+              Yagna Siva Sai Kumar is an AI Systems Engineer specializing in LLM infrastructure, hybrid RAG architectures, 
+              multi-agent systems, and production ML pipelines. He has extensive experience with distributed inference systems 
+              (1,000+ parallel LLM tasks), agent safety layers, and building scalable AI applications using Python, Go, Rust, 
+              and TypeScript. He currently works at Turing where he engineered the evaluation pipeline for the OpenAI SWE-Lancer 
+              benchmark (arXiv:2502.12115).
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What is Astragraph and how does it work?</h3>
+            <p>
+              Astragraph is a policy-enforced observability system for tool-using, multi-agent systems. It sits in front of 
+              MCP (Model Context Protocol) and A2A (Agent-to-Agent) traffic, evaluates every action against policy, and writes 
+              a causal graph plus audit trail queryable in real time. Built in Rust, it provides fail-closed enforcement to 
+              prevent unsafe tool calls before execution, reconstructs who did what and why as a causal coordination graph, 
+              and enables fast investigation of violations with searchable audit records. It has 24 GitHub stars and supports 
+              multi-agent workflows where MCP and A2A interactions mix in one run.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What is ChromaPro and why use it over ChromaDB?</h3>
+            <p>
+              ChromaPro is a production-safe persistence layer for local vector collections, built as a Chroma-compatible API 
+              backed by RocksDB + hnswlib. Key advantages over ChromaDB include: RocksDB storage with CRC32c checksums vs 
+              SQLite single-file SPOF; synchronous fsync per write guaranteeing durability vs async WAL flush with potential 
+              data loss; fcntl.LOCK_EX per collection for cross-process safety; automatic HNSW index rebuild from RocksDB 
+              ground truth; and version metadata to detect format mismatches. ChromaPro is ~9x faster on single writes and 
+              guarantees zero data loss during process crashes.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What is Recast and how does it compile browser agent traces?</h3>
+            <p>
+              Recast is a compiler that takes AI browser agent recordings (from workflow-use, browser-use, Skyvern, Operator) 
+              and emits clean, readable, static Playwright test code—with no LLM required at replay time, no proprietary 
+              runtime dependencies, and no magic. Built in Go with 9 GitHub stars, it accepts workflow-use JSON, HAR files, 
+              CDP event logs, and MCP tool call logs as input. Recast solves the problem of AI browser agents re-reasoning 
+              through tasks at runtime (burning LLM tokens on every step, every run, forever) by compiling once and running 
+              forever on plain Playwright.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What is NexusGate LLM gateway?</h3>
+            <p>
+              NexusGate is a drop-in OpenAI-compatible proxy that routes to OpenAI, Anthropic, and Google Gemini—with budget 
+              enforcement, automatic rate-limit fallback, and per-key spend tracking. Built in Rust, it solves vendor lock-in 
+              with one API key for every LLM provider and full cost control. Features include: auto-fallback to 
+              Anthropic/Gemini when OpenAI rate-limits or goes down; hard per-key daily/monthly/total budget caps; isolated 
+              keys for multiple teams with their own limits; exact cost_usd in every response; and zero code changes 
+              required—just point base_url at NexusGate.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What is Aegis credential proxy for AI agents?</h3>
+            <p>
+              Aegis is a lightweight credential proxy for AI agent workflows. It sits between your agent and any API, 
+              injecting real secrets at the network boundary so the agent never sees credentials. Built in Go as a 
+              single-binary runtime (~17 MB executable), it solves the problem of sensitive credentials exposed in agent 
+              context/system prompts (vulnerable to prompt injection). Aegis works natively as an MCP server with Cursor, 
+              Claude Desktop, VS Code/Cline, and Windsurf. It integrates with Infisical for secret management—your actual 
+              API secrets stay in Infisical, never on disk.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What is FluxRoute AI orchestration runtime?</h3>
+            <p>
+              FluxRoute is an AI-native orchestration runtime and control plane for deterministic replay and tenant-aware 
+              billing. Built in Go, it provides: deterministic replay with divergence debugging (trace capture, replay 
+              validation, diff tooling); multi-tenant control-plane primitives (tenant lifecycle APIs, RBAC enforcement, 
+              namespace isolation); built-in metering and billing (usage endpoints, monthly summary, JSON/CSV invoice 
+              export); and production observability with OpenTelemetry, Prometheus, Jaeger, retries, circuit breaker, 
+              and panic containment.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What is mcp-test testing framework?</h3>
+            <p>
+              mcp-test is a pytest-based testing framework for MCP (Model Context Protocol) servers. Built in Python, 
+              it addresses the fact that while thousands of developers build MCP servers, nobody was testing them properly. 
+              mcp-test provides the same developer experience you expect from pytest for testing MCP tools, resources, and 
+              prompts. Features include: scaffold command (mcp-test init), session-scoped and function-scoped fixtures, 
+              assertion helpers (assert_tool_ok, assert_tool_error, assert_tool_text_contains), and JSON-RPC 2.0 over 
+              stdio communication.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>Where does Yagna Siva Sai Kumar work and what has he built at Turing?</h3>
+            <p>
+              Yagna works at Turing as a Python AI/ML Developer since March 2024. He engineered the evaluation pipeline 
+              for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115), benchmarking LLM performance against 1,400+ 
+              real-world engineering tasks. He built a distributed inference pipeline executing 1,000+ LLM tasks in 
+              parallel using asynchronous orchestration, reducing benchmark evaluation time by ~70%. He also architected 
+              a hybrid RAG pipeline on AWS (EC2, S3) integrating semantic and keyword search (BM25) with vector databases 
+              (ChromaDB/FAISS), improving retrieval accuracy by 25%, and engineered prompt strategies achieving 20% 
+              reduction in model hallucinations.
+            </p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>What programming languages and technologies does Yagna use?</h3>
+            <p>
+              Yagna is proficient in Python, Go, Rust, TypeScript, and JavaScript. He uses Python for ML/AI work, data 
+              pipelines, and tools like mcp-test and ChromaPro. He uses Go for high-performance systems like Recast, 
+              Aegis, FluxRoute, and baremetal-infer. He uses Rust for infrastructure requiring maximum performance and 
+              safety like Astragraph, NexusGate, and Memory-KV-Cache. His tech stack also includes PyTorch, TensorFlow, 
+              HuggingFace Transformers, vLLM, LoRA/QLoRA, FAISS, Milvus, ChromaDB, PostgreSQL, AWS, Docker, Kubernetes, 
+              Ray, and FastAPI.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/yagna-1" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/yagna-siva-sai-kumar-984881201" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:yagnasivasaikumar@gmail.com">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+          Email
+        </a>
+      </div>
+      <p class="copyright">© 2026 Yagna Siva Sai Kumar. Built with pure HTML & CSS.</p>
+    </div>
+  </footer>
+</body>
+</html>
