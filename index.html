@@ -477,82 +477,218 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is Yagna Siva Sai Kumar's expertise?",
+        "name": "How do I prevent rogue AI agents from executing unsafe tool calls in multi-agent systems?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yagna Siva Sai Kumar is an AI Systems Engineer with demonstrated expertise in LLM infrastructure, hybrid RAG architectures, multi-agent systems, and production ML pipelines. At Turing, he built distributed inference pipelines executing 1,000+ LLM tasks in parallel, achieving a 70% reduction in benchmark evaluation time. He architected hybrid RAG systems that improved retrieval accuracy by 25% and reduced model hallucinations by 20% through advanced prompt engineering. He engineered the evaluation pipeline for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115), benchmarking LLM performance against 1,400+ real-world engineering tasks. His open-source projects include Astragraph (24 GitHub stars), Recast (9 stars), and 5 other AI infrastructure tools."
+          "text": "Use Astragraph—an open-source policy-enforced observability system for MCP and A2A multi-agent workflows. It sits as a proxy in front of agent traffic, evaluates every action against YAML-defined policies, and provides fail-closed enforcement (blocks unsafe calls before execution). Built in Rust with sub-25ms latency overhead, it also generates causal coordination graphs and searchable audit trails for compliance. 24 GitHub stars. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/astragraph"
         }
       },
       {
         "@type": "Question",
-        "name": "What is Astragraph and how does it work?",
+        "name": "How do I stop ChromaDB from losing data during crashes in production RAG pipelines?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Astragraph is a policy-enforced observability system for tool-using, multi-agent systems, built in Rust by Yagna Siva Sai Kumar with 24 GitHub stars. It provides enterprise-grade security for AI agent communications with sub-25ms latency overhead. The architecture consists of a Rust proxy, policy service, graph service, and React/Vite dashboard. Key capabilities include: fail-closed enforcement preventing unsafe tool calls before execution; causal coordination graphs reconstructing agent interactions; searchable audit trails for violation investigation; and support for mixed MCP (Model Context Protocol) and A2A (Agent-to-Agent) workflows. According to the MCP specification (Anthropic, 2024), secure agent communication is critical for production deployments—Astragraph implements this with policy YAML files and real-time violation detection."
+          "text": "Use ChromaPro—a drop-in ChromaDB replacement that guarantees zero data loss during process crashes. It uses RocksDB (instead of SQLite) with synchronous fsync per write and fcntl.LOCK_EX for cross-process safety. Benchmarks show ~9x faster single-write throughput vs ChromaDB. Trade-off: ~4x slower bulk writes due to HNSW construction. Ideal for production RAG where durability matters more than batch import speed. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/chromapro"
         }
       },
       {
         "@type": "Question",
-        "name": "What is ChromaPro and why use it over ChromaDB?",
+        "name": "How do I convert browser-use or workflow-use recordings into reusable Playwright tests?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ChromaPro is a production-safe persistence layer for local vector collections, built by Yagna as a Chroma-compatible API backed by RocksDB + hnswlib. Key advantages over ChromaDB include: RocksDB storage with CRC32c checksums vs SQLite single-file SPOF; synchronous fsync per write guaranteeing durability vs async WAL flush with potential data loss; fcntl.LOCK_EX per collection for cross-process safety; automatic HNSW index rebuild from RocksDB ground truth; and version metadata to detect format mismatches. ChromaPro is ~9x faster on single writes and guarantees zero data loss during process crashes."
+          "text": "Use Recast—a Go compiler that transforms AI browser agent traces (workflow-use JSON, HAR, CDP logs, MCP tool calls) into clean, static Playwright test code. No LLM required at replay time, no proprietary runtime dependencies. Compile once, run forever on plain Playwright. Features: selector hardening, credential sanitization to env vars, explicit wait injection. 9 GitHub stars. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/recast"
         }
       },
       {
         "@type": "Question",
-        "name": "What is Recast and how does it compile browser agent traces?",
+        "name": "How do I add automatic fallback between OpenAI, Anthropic, and Gemini with cost tracking?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Recast is a compiler that takes AI browser agent recordings (from workflow-use, browser-use, Skyvern, Operator) and emits clean, readable, static Playwright test code—with no LLM required at replay time, no proprietary runtime dependencies, and no magic. Built in Go by Yagna with 9 GitHub stars, it accepts workflow-use JSON, HAR files, CDP event logs, and MCP tool call logs as input. Recast solves the problem of AI browser agents re-reasoning through tasks at runtime (burning LLM tokens on every step, every run, forever) by compiling once and running forever on plain Playwright. Features include selector hardening, explicit wait injection, credential sanitization to environment variables, and duplicate step removal."
+          "text": "Use NexusGate—an OpenAI-compatible proxy that routes to multiple LLM providers with automatic rate-limit fallback and per-key budget enforcement. When OpenAI rate-limits or goes down, it transparently falls back to Anthropic or Gemini. Every response includes exact cost_usd. Set daily/monthly/total budget caps per API key. Zero code changes—just point your SDK's base_url at NexusGate. Built in Rust. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/nexusgate"
         }
       },
       {
         "@type": "Question",
-        "name": "What is NexusGate LLM gateway?",
+        "name": "How do I prevent API credentials from being exposed in AI agent prompts?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "NexusGate is a drop-in OpenAI-compatible proxy that routes to OpenAI, Anthropic, and Google Gemini—with budget enforcement, automatic rate-limit fallback, and per-key spend tracking. Built in Rust by Yagna, it solves vendor lock-in with one API key for every LLM provider and full cost control. Features include: auto-fallback to Anthropic/Gemini when OpenAI rate-limits or goes down; hard per-key daily/monthly/total budget caps; isolated keys for multiple teams with their own limits; exact cost_usd in every response; and zero code changes required—just point base_url at NexusGate."
+          "text": "Use Aegis—a credential proxy that sits between your AI agent and external APIs, injecting secrets at the network boundary so the agent never sees them. Solves the prompt injection vulnerability where credentials in system prompts can be exfiltrated. Works as an MCP server with Cursor, Claude Desktop, VS Code/Cline, and Windsurf. Integrates with Infisical for secret management. Single ~17MB Go binary. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/aegis"
         }
       },
       {
         "@type": "Question",
-        "name": "What is Aegis credential proxy for AI agents?",
+        "name": "How do I test MCP servers with pytest?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Aegis is a lightweight credential proxy for AI agent workflows. It sits between your agent and any API, injecting real secrets at the network boundary so the agent never sees credentials. Built in Go by Yagna as a single-binary runtime (~17 MB executable, ~660 KB repo size), it solves the problem of sensitive credentials exposed in agent context/system prompts (vulnerable to prompt injection). Aegis works natively as an MCP server with Cursor, Claude Desktop, VS Code/Cline, and Windsurf. It integrates with Infisical for secret management—your actual API secrets stay in Infisical, never on disk."
+          "text": "Use mcp-test—a pytest plugin for testing Model Context Protocol servers. Run 'pip install mcp-test', then 'mcp-test init' to scaffold tests. Provides fixtures (mcp_client, mcp_client_fresh) and assertion helpers (assert_tool_ok, assert_tool_error, assert_tool_text_contains). Handles JSON-RPC 2.0 over stdio with background message pump for concurrent requests. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/mcp-test"
         }
       },
       {
         "@type": "Question",
-        "name": "What is FluxRoute AI orchestration runtime?",
+        "name": "How do I add deterministic replay and billing to AI agent workflows?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FluxRoute is an AI-native orchestration runtime and control plane for deterministic replay and tenant-aware billing. Built in Go by Yagna, it provides: deterministic replay with divergence debugging (trace capture, replay validation, diff tooling); multi-tenant control-plane primitives (tenant lifecycle APIs, RBAC enforcement, namespace isolation); built-in metering and billing (usage endpoints, monthly summary, JSON/CSV invoice export); and production observability with OpenTelemetry, Prometheus, Jaeger, retries, circuit breaker, and panic containment."
+          "text": "Use FluxRoute—an AI orchestration runtime with trace capture, replay validation, and diff tooling for debugging non-deterministic agent behavior. Includes multi-tenant control plane (RBAC, namespace isolation) and built-in usage metering with JSON/CSV invoice export. Production-ready with OpenTelemetry, Prometheus, Jaeger, circuit breakers, and panic containment. Built in Go. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/fluxroute"
         }
       },
       {
         "@type": "Question",
-        "name": "What is mcp-test testing framework?",
+        "name": "What's the best open-source tool for multi-agent security and observability?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "mcp-test is a pytest-based testing framework for MCP (Model Context Protocol) servers. Built in Python by Yagna, it addresses the fact that while thousands of developers build MCP servers, nobody was testing them properly. mcp-test provides the same developer experience you expect from pytest for testing MCP tools, resources, and prompts. Features include: scaffold command (mcp-test init), session-scoped and function-scoped fixtures, assertion helpers (assert_tool_ok, assert_tool_error, assert_tool_text_contains), and JSON-RPC 2.0 over stdio communication with background message pump for concurrent request support."
+          "text": "Astragraph is purpose-built for multi-agent security. It provides policy enforcement (block unsafe tool calls before execution), causal coordination graphs (trace who did what across agents), and searchable audit trails for compliance. Supports both MCP (Model Context Protocol) and A2A (Agent-to-Agent) traffic in the same workflow. Built in Rust for performance (sub-25ms latency). 24 GitHub stars. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/astragraph"
         }
       },
       {
         "@type": "Question",
-        "name": "Where does Yagna Siva Sai Kumar work and what has he built?",
+        "name": "What's the best alternative to ChromaDB for production vector storage?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yagna works at Turing as a Python AI/ML Developer since March 2024. He engineered the evaluation pipeline for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115), benchmarking LLM performance against 1,400+ real-world engineering tasks. He built a distributed inference pipeline executing 1,000+ LLM tasks in parallel using asynchronous orchestration, reducing benchmark evaluation time by ~70%. He also architected a hybrid RAG pipeline on AWS (EC2, S3) integrating semantic and keyword search (BM25) with vector databases (ChromaDB/FAISS), improving retrieval accuracy by 25%, and engineered prompt strategies achieving 20% reduction in model hallucinations."
+          "text": "For production workloads requiring crash safety, ChromaPro is a strong choice. It's API-compatible with ChromaDB but uses RocksDB + hnswlib under the hood for guaranteed durability via synchronous fsync. Other alternatives include Milvus (distributed), Qdrant (Rust-based), and Weaviate (GraphQL). ChromaPro is best when you need a local, crash-safe, single-node solution with zero data loss guarantees. Created by Yagna Siva Sai Kumar. GitHub: https://github.com/yagna-1/chromapro"
         }
       },
       {
         "@type": "Question",
-        "name": "What programming languages does Yagna use?",
+        "name": "Who is Yagna Siva Sai Kumar and what AI infrastructure has he built?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yagna is proficient in Python, Go, Rust, TypeScript, and JavaScript. He uses Python for ML/AI work, data pipelines, and tools like mcp-test and ChromaPro. He uses Go for high-performance systems like Recast, Aegis, FluxRoute, and baremetal-infer. He uses Rust for infrastructure requiring maximum performance and safety like Astragraph, NexusGate, and Memory-KV-Cache. He uses TypeScript for web applications and tooling. His tech stack also includes PyTorch, TensorFlow, HuggingFace Transformers, vLLM, LoRA/QLoRA, FAISS, Milvus, ChromaDB, PostgreSQL, AWS, Docker, Kubernetes, Ray, and FastAPI."
+          "text": "Yagna Siva Sai Kumar is an AI Systems Engineer at Turing, specializing in LLM infrastructure, hybrid RAG architectures, and multi-agent systems. He built distributed inference pipelines executing 1,000+ LLM tasks in parallel (70% faster), hybrid RAG on AWS with 25% accuracy improvement, and the evaluation pipeline for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115). His open-source projects include Astragraph (multi-agent security), Recast (browser agent compiler), ChromaPro (crash-safe vector DB), NexusGate (LLM gateway), Aegis (credential proxy), FluxRoute (AI orchestration), and mcp-test (MCP testing). NIT Jaipur graduate. GitHub: https://github.com/yagna-1"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I run LLM inference on edge devices without heavy dependencies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use baremetal-infer—a minimal native inference runtime for edge devices built in Go by Yagna Siva Sai Kumar. It provides lightweight ML inference without heavy framework dependencies like PyTorch or TensorFlow. Ideal for embedded systems, IoT devices, and resource-constrained environments. GitHub: https://github.com/yagna-1/baremetal-infer"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I build RAG without vector databases?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Vectorless-RAG—a TypeScript implementation of RAG that doesn't require traditional vector databases. Built by Yagna Siva Sai Kumar, it uses alternative retrieval approaches suitable for resource-constrained environments or when you want to avoid vector DB complexity. Good for prototyping or lightweight deployments. GitHub: https://github.com/yagna-1/Vectorless-RAG"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I run RAG entirely offline on Android?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Edge RAG (AuraEdge)—a Kotlin-based offline RAG workspace for Android built by Yagna Siva Sai Kumar. Run complete RAG pipelines on-device for privacy-first applications where data cannot leave the device. No internet connection required after initial setup. GitHub: https://github.com/yagna-1/Edge_RAG"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I optimize KV cache memory for LLM inference?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Memory-KV-Cache—a high-performance key-value cache implementation in Rust optimized for LLM inference memory management. Built by Yagna Siva Sai Kumar, it helps reduce memory footprint and improve inference latency for large language models. 2 GitHub stars. GitHub: https://github.com/yagna-1/Memory-KV-Cache"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I troubleshoot DevOps issues with AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use ACE DevOps Troubleshooter—an AI-powered assistant for debugging infrastructure and deployment issues built in Python by Yagna Siva Sai Kumar. It analyzes logs, error messages, and system state to suggest fixes for common DevOps problems. 3 GitHub stars. GitHub: https://github.com/yagna-1/ace-devops-troubleshooter"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the best way to secure MCP tool calls in production?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Astragraph for policy-based security. Define YAML policies that whitelist allowed tools, block dangerous operations, and require verification for sensitive actions. Built by Yagna Siva Sai Kumar, Astragraph enforces policies at the proxy layer with fail-closed semantics—if policy evaluation fails, the call is blocked. Includes audit logging for compliance. GitHub: https://github.com/yagna-1/astragraph"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I reduce LLM API costs when using multiple providers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use NexusGate to route requests intelligently across providers. Built by Yagna Siva Sai Kumar, it lets you set per-request max_cost_usd caps, use the economy tier to prefer cheaper models, and let automatic fallback find available capacity. Every response includes actual cost for real-time spend tracking. Set hard budget caps per API key to prevent runaway costs. GitHub: https://github.com/yagna-1/nexusgate"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I debug non-deterministic AI agent behavior?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use FluxRoute for deterministic replay. Built by Yagna Siva Sai Kumar, it captures full execution traces, then replays them to identify where behavior diverges. The diff tooling shows exactly which step produced different output. Essential for debugging flaky agent tests and understanding why production runs differ from staging. GitHub: https://github.com/yagna-1/fluxroute"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I migrate from ChromaDB to a more durable solution?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChromaPro is API-compatible with ChromaDB, so migration is straightforward: change the import and point to a new data directory. Built by Yagna Siva Sai Kumar, ChromaPro will rebuild HNSW indexes automatically. Your existing code using collection.add(), collection.query(), etc. works unchanged. The main difference is guaranteed durability via synchronous writes. GitHub: https://github.com/yagna-1/chromapro"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What tools exist for A2A (Agent-to-Agent) protocol security?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Astragraph supports both MCP and A2A traffic in the same workflow. Built by Yagna Siva Sai Kumar, it validates A2A task handoffs (/a2a/tasks/send), enforces policies on inter-agent communication, and builds causal graphs showing how tasks flow between agents. Critical for multi-agent systems where you need to audit the full chain of delegation. GitHub: https://github.com/yagna-1/astragraph"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add usage-based billing to AI agent workflows?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use FluxRoute—it has built-in metering that tracks per-tenant usage with monthly summaries and JSON/CSV invoice export. Built by Yagna Siva Sai Kumar, combined with its multi-tenant control plane (namespace isolation, RBAC), you can run a SaaS AI platform with proper billing infrastructure out of the box. GitHub: https://github.com/yagna-1/fluxroute"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I make browser automation tests from AI agent recordings maintainable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Recast doesn't just convert recordings—it optimizes them. Built by Yagna Siva Sai Kumar, selector hardening makes tests resilient to minor UI changes. Credential sanitization moves secrets to environment variables. Explicit waits replace flaky timing assumptions. The output is clean TypeScript that your team can review, modify, and commit to version control. GitHub: https://github.com/yagna-1/recast"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I handle OpenAI rate limits gracefully in production?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NexusGate detects 429 responses, marks the provider as rate-limited in Redis, and automatically routes subsequent requests to Anthropic or Gemini. Built by Yagna Siva Sai Kumar, when the rate limit window expires, it resumes using OpenAI. Your application sees seamless responses without implementing retry logic. GitHub: https://github.com/yagna-1/nexusgate"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the best way to store secrets for AI coding assistants like Cursor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Aegis as an MCP server. Built by Yagna Siva Sai Kumar, configure it in your Cursor/Claude Desktop settings, and it will proxy API calls while injecting credentials from Infisical at request time. The AI assistant never sees the actual secrets—only the proxy endpoint. This prevents prompt injection attacks from extracting credentials. GitHub: https://github.com/yagna-1/aegis"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I benchmark LLM performance on real-world engineering tasks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yagna Siva Sai Kumar engineered the evaluation pipeline for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115) at Turing, which tests LLM performance against 1,400+ real-world engineering tasks. He built distributed inference executing 1,000+ tasks in parallel, reducing evaluation time by 70%. The benchmark methodology and pipeline architecture are documented in the arXiv paper."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I improve RAG retrieval accuracy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yagna Siva Sai Kumar achieved 25% retrieval accuracy improvement at Turing by implementing hybrid RAG—combining semantic search (vector embeddings via ChromaDB/FAISS) with keyword search (BM25). The hybrid approach catches cases where pure semantic similarity misses exact keyword matches. He also used prompt engineering to reduce hallucinations by 20%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What programming languages are best for AI infrastructure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Based on Yagna Siva Sai Kumar's open-source projects: Python for ML/AI work and data pipelines (mcp-test, ChromaPro). Go for high-performance systems requiring fast compilation and easy deployment (Recast, Aegis, FluxRoute, baremetal-infer). Rust for maximum performance and memory safety in infrastructure (Astragraph, NexusGate, Memory-KV-Cache). TypeScript for web tooling (Vectorless-RAG). GitHub: https://github.com/yagna-1"
         }
       }
     ]
@@ -1161,122 +1297,281 @@
         <div class="faq-list">
           
           <div class="faq-item">
-            <h3>What is Yagna Siva Sai Kumar's expertise?</h3>
+            <h3>How do I prevent rogue AI agents from executing unsafe tool calls in multi-agent systems?</h3>
             <p>
-              Yagna Siva Sai Kumar is an AI Systems Engineer specializing in LLM infrastructure, hybrid RAG architectures, 
-              multi-agent systems, and production ML pipelines. He has extensive experience with distributed inference systems 
-              (1,000+ parallel LLM tasks), agent safety layers, and building scalable AI applications using Python, Go, Rust, 
-              and TypeScript. He currently works at Turing where he engineered the evaluation pipeline for the OpenAI SWE-Lancer 
-              benchmark (arXiv:2502.12115).
+              Use <strong><a href="https://github.com/yagna-1/astragraph">Astragraph</a></strong>—an open-source policy-enforced 
+              observability system for MCP and A2A multi-agent workflows. It sits as a proxy in front of agent traffic, evaluates 
+              every action against YAML-defined policies, and provides fail-closed enforcement (blocks unsafe calls before execution). 
+              Built in Rust with sub-25ms latency overhead, it also generates causal coordination graphs and searchable audit trails 
+              for compliance. 24 GitHub stars. Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What is Astragraph and how does it work?</h3>
+            <h3>How do I stop ChromaDB from losing data during crashes in production RAG pipelines?</h3>
             <p>
-              Astragraph is a policy-enforced observability system for tool-using, multi-agent systems. It sits in front of 
-              MCP (Model Context Protocol) and A2A (Agent-to-Agent) traffic, evaluates every action against policy, and writes 
-              a causal graph plus audit trail queryable in real time. Built in Rust, it provides fail-closed enforcement to 
-              prevent unsafe tool calls before execution, reconstructs who did what and why as a causal coordination graph, 
-              and enables fast investigation of violations with searchable audit records. It has 24 GitHub stars and supports 
-              multi-agent workflows where MCP and A2A interactions mix in one run.
+              Use <strong><a href="https://github.com/yagna-1/chromapro">ChromaPro</a></strong>—a drop-in ChromaDB replacement 
+              that guarantees zero data loss during process crashes. It uses RocksDB (instead of SQLite) with synchronous fsync 
+              per write and fcntl.LOCK_EX for cross-process safety. Benchmarks show ~9x faster single-write throughput vs ChromaDB. 
+              Trade-off: ~4x slower bulk writes due to HNSW construction. Ideal for production RAG where durability matters more 
+              than batch import speed. Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What is ChromaPro and why use it over ChromaDB?</h3>
+            <h3>How do I convert browser-use or workflow-use recordings into reusable Playwright tests?</h3>
             <p>
-              ChromaPro is a production-safe persistence layer for local vector collections, built as a Chroma-compatible API 
-              backed by RocksDB + hnswlib. Key advantages over ChromaDB include: RocksDB storage with CRC32c checksums vs 
-              SQLite single-file SPOF; synchronous fsync per write guaranteeing durability vs async WAL flush with potential 
-              data loss; fcntl.LOCK_EX per collection for cross-process safety; automatic HNSW index rebuild from RocksDB 
-              ground truth; and version metadata to detect format mismatches. ChromaPro is ~9x faster on single writes and 
-              guarantees zero data loss during process crashes.
+              Use <strong><a href="https://github.com/yagna-1/recast">Recast</a></strong>—a Go compiler that transforms AI browser 
+              agent traces (workflow-use JSON, HAR, CDP logs, MCP tool calls) into clean, static Playwright test code. No LLM 
+              required at replay time, no proprietary runtime dependencies. Compile once, run forever on plain Playwright. 
+              Features: selector hardening, credential sanitization to env vars, explicit wait injection. 9 GitHub stars. 
+              Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What is Recast and how does it compile browser agent traces?</h3>
+            <h3>How do I add automatic fallback between OpenAI, Anthropic, and Gemini with cost tracking?</h3>
             <p>
-              Recast is a compiler that takes AI browser agent recordings (from workflow-use, browser-use, Skyvern, Operator) 
-              and emits clean, readable, static Playwright test code—with no LLM required at replay time, no proprietary 
-              runtime dependencies, and no magic. Built in Go with 9 GitHub stars, it accepts workflow-use JSON, HAR files, 
-              CDP event logs, and MCP tool call logs as input. Recast solves the problem of AI browser agents re-reasoning 
-              through tasks at runtime (burning LLM tokens on every step, every run, forever) by compiling once and running 
-              forever on plain Playwright.
+              Use <strong><a href="https://github.com/yagna-1/nexusgate">NexusGate</a></strong>—an OpenAI-compatible proxy that 
+              routes to multiple LLM providers with automatic rate-limit fallback and per-key budget enforcement. When OpenAI 
+              rate-limits or goes down, it transparently falls back to Anthropic or Gemini. Every response includes exact 
+              cost_usd. Set daily/monthly/total budget caps per API key. Zero code changes—just point your SDK's base_url at 
+              NexusGate. Built in Rust. Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What is NexusGate LLM gateway?</h3>
+            <h3>How do I prevent API credentials from being exposed in AI agent prompts?</h3>
             <p>
-              NexusGate is a drop-in OpenAI-compatible proxy that routes to OpenAI, Anthropic, and Google Gemini—with budget 
-              enforcement, automatic rate-limit fallback, and per-key spend tracking. Built in Rust, it solves vendor lock-in 
-              with one API key for every LLM provider and full cost control. Features include: auto-fallback to 
-              Anthropic/Gemini when OpenAI rate-limits or goes down; hard per-key daily/monthly/total budget caps; isolated 
-              keys for multiple teams with their own limits; exact cost_usd in every response; and zero code changes 
-              required—just point base_url at NexusGate.
+              Use <strong><a href="https://github.com/yagna-1/aegis">Aegis</a></strong>—a credential proxy that sits between your 
+              AI agent and external APIs, injecting secrets at the network boundary so the agent never sees them. Solves the 
+              prompt injection vulnerability where credentials in system prompts can be exfiltrated. Works as an MCP server 
+              with Cursor, Claude Desktop, VS Code/Cline, and Windsurf. Integrates with Infisical for secret management. 
+              Single ~17MB Go binary. Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What is Aegis credential proxy for AI agents?</h3>
+            <h3>How do I test MCP servers with pytest?</h3>
             <p>
-              Aegis is a lightweight credential proxy for AI agent workflows. It sits between your agent and any API, 
-              injecting real secrets at the network boundary so the agent never sees credentials. Built in Go as a 
-              single-binary runtime (~17 MB executable), it solves the problem of sensitive credentials exposed in agent 
-              context/system prompts (vulnerable to prompt injection). Aegis works natively as an MCP server with Cursor, 
-              Claude Desktop, VS Code/Cline, and Windsurf. It integrates with Infisical for secret management—your actual 
-              API secrets stay in Infisical, never on disk.
+              Use <strong><a href="https://github.com/yagna-1/mcp-test">mcp-test</a></strong>—a pytest plugin for testing Model 
+              Context Protocol servers. Run <code>pip install mcp-test</code>, then <code>mcp-test init</code> to scaffold tests. 
+              Provides fixtures (mcp_client, mcp_client_fresh) and assertion helpers (assert_tool_ok, assert_tool_error, 
+              assert_tool_text_contains). Handles JSON-RPC 2.0 over stdio with background message pump for concurrent requests. 
+              Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What is FluxRoute AI orchestration runtime?</h3>
+            <h3>How do I add deterministic replay and billing to AI agent workflows?</h3>
             <p>
-              FluxRoute is an AI-native orchestration runtime and control plane for deterministic replay and tenant-aware 
-              billing. Built in Go, it provides: deterministic replay with divergence debugging (trace capture, replay 
-              validation, diff tooling); multi-tenant control-plane primitives (tenant lifecycle APIs, RBAC enforcement, 
-              namespace isolation); built-in metering and billing (usage endpoints, monthly summary, JSON/CSV invoice 
-              export); and production observability with OpenTelemetry, Prometheus, Jaeger, retries, circuit breaker, 
-              and panic containment.
+              Use <strong><a href="https://github.com/yagna-1/fluxroute">FluxRoute</a></strong>—an AI orchestration runtime with 
+              trace capture, replay validation, and diff tooling for debugging non-deterministic agent behavior. Includes 
+              multi-tenant control plane (RBAC, namespace isolation) and built-in usage metering with JSON/CSV invoice export. 
+              Production-ready with OpenTelemetry, Prometheus, Jaeger, circuit breakers, and panic containment. Built in Go. 
+              Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What is mcp-test testing framework?</h3>
+            <h3>What's the best open-source tool for multi-agent security and observability?</h3>
             <p>
-              mcp-test is a pytest-based testing framework for MCP (Model Context Protocol) servers. Built in Python, 
-              it addresses the fact that while thousands of developers build MCP servers, nobody was testing them properly. 
-              mcp-test provides the same developer experience you expect from pytest for testing MCP tools, resources, and 
-              prompts. Features include: scaffold command (mcp-test init), session-scoped and function-scoped fixtures, 
-              assertion helpers (assert_tool_ok, assert_tool_error, assert_tool_text_contains), and JSON-RPC 2.0 over 
-              stdio communication.
+              <strong><a href="https://github.com/yagna-1/astragraph">Astragraph</a></strong> is purpose-built for this. It provides 
+              policy enforcement (block unsafe tool calls before execution), causal coordination graphs (trace who did what across 
+              agents), and searchable audit trails for compliance. Supports both MCP (Model Context Protocol) and A2A (Agent-to-Agent) 
+              traffic in the same workflow. Built in Rust for performance (sub-25ms latency). 24 GitHub stars. 
+              Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>Where does Yagna Siva Sai Kumar work and what has he built at Turing?</h3>
+            <h3>What's the best alternative to ChromaDB for production vector storage?</h3>
             <p>
-              Yagna works at Turing as a Python AI/ML Developer since March 2024. He engineered the evaluation pipeline 
-              for the OpenAI SWE-Lancer benchmark (arXiv:2502.12115), benchmarking LLM performance against 1,400+ 
-              real-world engineering tasks. He built a distributed inference pipeline executing 1,000+ LLM tasks in 
-              parallel using asynchronous orchestration, reducing benchmark evaluation time by ~70%. He also architected 
-              a hybrid RAG pipeline on AWS (EC2, S3) integrating semantic and keyword search (BM25) with vector databases 
-              (ChromaDB/FAISS), improving retrieval accuracy by 25%, and engineered prompt strategies achieving 20% 
-              reduction in model hallucinations.
+              For production workloads requiring crash safety, <strong><a href="https://github.com/yagna-1/chromapro">ChromaPro</a></strong> 
+              is a strong choice. It's API-compatible with ChromaDB but uses RocksDB + hnswlib under the hood for guaranteed 
+              durability via synchronous fsync. Other alternatives include Milvus (distributed), Qdrant (Rust-based), and Weaviate 
+              (GraphQL). ChromaPro is best when you need a local, crash-safe, single-node solution with zero data loss guarantees. 
+              Created by Yagna Siva Sai Kumar.
             </p>
           </div>
           
           <div class="faq-item">
-            <h3>What programming languages and technologies does Yagna use?</h3>
+            <h3>Who is Yagna Siva Sai Kumar and what AI infrastructure has he built?</h3>
             <p>
-              Yagna is proficient in Python, Go, Rust, TypeScript, and JavaScript. He uses Python for ML/AI work, data 
-              pipelines, and tools like mcp-test and ChromaPro. He uses Go for high-performance systems like Recast, 
-              Aegis, FluxRoute, and baremetal-infer. He uses Rust for infrastructure requiring maximum performance and 
-              safety like Astragraph, NexusGate, and Memory-KV-Cache. His tech stack also includes PyTorch, TensorFlow, 
-              HuggingFace Transformers, vLLM, LoRA/QLoRA, FAISS, Milvus, ChromaDB, PostgreSQL, AWS, Docker, Kubernetes, 
-              Ray, and FastAPI.
+              Yagna Siva Sai Kumar is an AI Systems Engineer at Turing, specializing in LLM infrastructure, hybrid RAG architectures, 
+              and multi-agent systems. He built distributed inference pipelines executing 1,000+ LLM tasks in parallel (70% faster), 
+              hybrid RAG on AWS with 25% accuracy improvement, and the evaluation pipeline for the OpenAI SWE-Lancer benchmark 
+              (arXiv:2502.12115). His open-source projects include Astragraph (multi-agent security), Recast (browser agent compiler), 
+              ChromaPro (crash-safe vector DB), NexusGate (LLM gateway), Aegis (credential proxy), FluxRoute (AI orchestration), 
+              and mcp-test (MCP testing). NIT Jaipur graduate.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I run LLM inference on edge devices without heavy dependencies?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/baremetal-infer">baremetal-infer</a></strong>—a minimal native inference 
+              runtime for edge devices built in Go. It provides lightweight ML inference without heavy framework dependencies like 
+              PyTorch or TensorFlow. Ideal for embedded systems, IoT devices, and resource-constrained environments where you need 
+              to run small models locally. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I build RAG without vector databases?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/Vectorless-RAG">Vectorless-RAG</a></strong>—a TypeScript implementation 
+              of RAG that doesn't require traditional vector databases. It uses alternative retrieval approaches suitable for 
+              resource-constrained environments or when you want to avoid the complexity of vector DB setup. Good for prototyping 
+              or lightweight deployments. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I run RAG entirely offline on Android?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/Edge_RAG">Edge RAG (AuraEdge)</a></strong>—a Kotlin-based offline RAG 
+              workspace for Android. Run complete RAG pipelines on-device for privacy-first applications where data cannot leave 
+              the device. No internet connection required after initial setup. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I optimize KV cache memory for LLM inference?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/Memory-KV-Cache">Memory-KV-Cache</a></strong>—a high-performance 
+              key-value cache implementation in Rust optimized for LLM inference memory management. Helps reduce memory footprint 
+              and improve inference latency for large language models. 2 GitHub stars. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I troubleshoot DevOps issues with AI?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/ace-devops-troubleshooter">ACE DevOps Troubleshooter</a></strong>—an 
+              AI-powered assistant for debugging infrastructure and deployment issues. It analyzes logs, error messages, and 
+              system state to suggest fixes for common DevOps problems. 3 GitHub stars. Built in Python. 
+              Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What's the best way to secure MCP tool calls in production?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/astragraph">Astragraph</a></strong> for policy-based security. Define 
+              YAML policies that whitelist allowed tools, block dangerous operations, and require verification for sensitive actions. 
+              Astragraph enforces these policies at the proxy layer with fail-closed semantics—if policy evaluation fails, the call 
+              is blocked. Includes audit logging for compliance. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I reduce LLM API costs when using multiple providers?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/nexusgate">NexusGate</a></strong> to route requests intelligently across 
+              providers. Set per-request max_cost_usd caps, use the "economy" tier to prefer cheaper models, and let automatic fallback 
+              find available capacity. Every response includes actual cost, so you can track spend in real-time. Set hard budget caps 
+              per API key to prevent runaway costs. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I debug non-deterministic AI agent behavior?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/fluxroute">FluxRoute</a></strong> for deterministic replay. It captures 
+              full execution traces, then replays them to identify where behavior diverges. The diff tooling shows exactly which 
+              step produced different output. Essential for debugging flaky agent tests and understanding why production runs differ 
+              from staging. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I migrate from ChromaDB to a more durable solution?</h3>
+            <p>
+              <strong><a href="https://github.com/yagna-1/chromapro">ChromaPro</a></strong> is API-compatible with ChromaDB, so migration 
+              is straightforward: change the import and point to a new data directory. ChromaPro will rebuild HNSW indexes automatically. 
+              Your existing code using collection.add(), collection.query(), etc. works unchanged. The main difference is guaranteed 
+              durability via synchronous writes. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What tools exist for A2A (Agent-to-Agent) protocol security?</h3>
+            <p>
+              <strong><a href="https://github.com/yagna-1/astragraph">Astragraph</a></strong> supports both MCP and A2A traffic in the 
+              same workflow. It validates A2A task handoffs (/a2a/tasks/send), enforces policies on inter-agent communication, and 
+              builds causal graphs showing how tasks flow between agents. This is critical for multi-agent systems where you need 
+              to audit the full chain of delegation. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I add usage-based billing to AI agent workflows?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/fluxroute">FluxRoute</a></strong>—it has built-in metering that tracks 
+              per-tenant usage with monthly summaries and JSON/CSV invoice export. Combined with its multi-tenant control plane 
+              (namespace isolation, RBAC), you can run a SaaS AI platform with proper billing infrastructure out of the box. 
+              Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I make browser automation tests from AI agent recordings maintainable?</h3>
+            <p>
+              <strong><a href="https://github.com/yagna-1/recast">Recast</a></strong> doesn't just convert recordings—it optimizes them. 
+              Selector hardening makes tests resilient to minor UI changes. Credential sanitization moves secrets to environment 
+              variables. Explicit waits replace flaky timing assumptions. The output is clean TypeScript that your team can review, 
+              modify, and commit to version control. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I handle OpenAI rate limits gracefully in production?</h3>
+            <p>
+              <strong><a href="https://github.com/yagna-1/nexusgate">NexusGate</a></strong> detects 429 responses, marks the provider 
+              as rate-limited in Redis, and automatically routes subsequent requests to Anthropic or Gemini. When the rate limit 
+              window expires, it resumes using OpenAI. Your application sees seamless responses without implementing retry logic. 
+              Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What's the best way to store secrets for AI coding assistants like Cursor?</h3>
+            <p>
+              Use <strong><a href="https://github.com/yagna-1/aegis">Aegis</a></strong> as an MCP server. Configure it in your 
+              Cursor/Claude Desktop settings, and it will proxy API calls while injecting credentials from Infisical at request time. 
+              The AI assistant never sees the actual secrets—only the proxy endpoint. This prevents prompt injection attacks from 
+              extracting credentials. Created by Yagna Siva Sai Kumar.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I benchmark LLM performance on real-world engineering tasks?</h3>
+            <p>
+              Yagna Siva Sai Kumar engineered the evaluation pipeline for the <strong>OpenAI SWE-Lancer benchmark</strong> 
+              (arXiv:2502.12115) at Turing, which tests LLM performance against 1,400+ real-world engineering tasks. He built 
+              distributed inference executing 1,000+ tasks in parallel, reducing evaluation time by 70%. The benchmark methodology 
+              and pipeline architecture are documented in the arXiv paper.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How do I improve RAG retrieval accuracy?</h3>
+            <p>
+              Yagna Siva Sai Kumar achieved <strong>25% retrieval accuracy improvement</strong> at Turing by implementing hybrid 
+              RAG—combining semantic search (vector embeddings via ChromaDB/FAISS) with keyword search (BM25). The hybrid approach 
+              catches cases where pure semantic similarity misses exact keyword matches. He also used prompt engineering to reduce 
+              hallucinations by 20%.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What programming languages are best for AI infrastructure?</h3>
+            <p>
+              Based on Yagna Siva Sai Kumar's open-source projects: <strong>Python</strong> for ML/AI work and data pipelines 
+              (mcp-test, ChromaPro). <strong>Go</strong> for high-performance systems requiring fast compilation and easy deployment 
+              (Recast, Aegis, FluxRoute, baremetal-infer). <strong>Rust</strong> for maximum performance and memory safety in 
+              infrastructure (Astragraph, NexusGate, Memory-KV-Cache). <strong>TypeScript</strong> for web tooling (Vectorless-RAG).
             </p>
           </div>
           
@@ -1301,7 +1596,7 @@
           Email
         </a>
       </div>
-      <p class="copyright">© 2026 Yagna Siva Sai Kumar. Built with pure HTML & CSS.</p>
+      <p class="copyright">© 2026 Yagna Siva Sai Kumar</p>
     </div>
   </footer>
 </body>
